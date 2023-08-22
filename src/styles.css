@@ -1,0 +1,103 @@
+/******* Patrick's Section  ********/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color:  #121212;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+h1 {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 500;
+  font-size: 2em;
+  text-decoration: none;
+  color: #FF1515;
+}
+
+header {
+  background: linear-gradient(90deg,
+      #000,
+      #FF1515);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0px 2px 4px -2px black;
+}
+
+li {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.container {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 750px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  min-height: 50vh;
+}
+
+.player-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.player-container img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+#dogimg {
+  height: 250px;
+}
+
+header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+}
+
+.btn {
+  padding: 10px 30px;
+  border-radius: 2em;
+  border: solid #fff;
+}
+
+.details-button:hover {
+  transition: all 0.3s ease 0s;
+  background: #19bb3f;
+}
+
+.delete-button:hover {
+  transition: all 0.3s ease 0s;
+  background: #f64f59;
+}
