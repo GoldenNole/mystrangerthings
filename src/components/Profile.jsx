@@ -11,17 +11,12 @@ const Profile = () => {
 
   useEffect(() => {
     async function getUsersData() {
-      const responce = await myData();
-      console.log("Messages", responce.data.messages);
-      console.log("Posts", responce.data.posts);
-      if (responce.success) {
-        setUserPosts(responce.data.posts);
-        setUser(responce.data.username);
-        setUserMessages(responce.data.messages);
-        const filteredMessages = userMessages.filter(message => {
-          return message.fromUser.username === user;
-        });
-        setUserMessages(filteredMessages);
+      const response = await myData();
+      if (response.success) {
+        setUserPosts(response.data.posts);
+        setUser(response.data.username);
+        setUserMessages(response.data.messages);
+        console.log("User Messages", response.data.messages);
       }
     }
     getUsersData();
@@ -43,7 +38,8 @@ const Profile = () => {
             <h2> Post Messages</h2>
             {post.messages.map((message) => (
               <div key={message._id}>
-                <h3>{message.content} {message.fromUser.username}</h3>
+                <h3>{message.content}</h3>
+                <h3>From: {message.fromUser.username}</h3>
               </div>
             ))}
           </div>
@@ -51,11 +47,13 @@ const Profile = () => {
       <h1> My Messages </h1>
       {userMessages &&
         userMessages.map((message) => (
+          message.fromUser.username === user && (
           <div key={message._id} className="container">
             <h2>{message.post.title}</h2>
-            <h3>{message.content}</h3>
+            <h3>Posted By: {message.post.author.username}</h3>
+            <h3>Your Message: {message.content}</h3>
           </div>
-        ))}
+        )))}
     </div>
   );
 };
