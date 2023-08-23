@@ -18,6 +18,7 @@ export default function App() {
         <Route path="/:postId" element={<DisplaySinglePost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/newpost" element={<CreatePostForm />} />
+        <Route path="/editpost" element={<EditPostForm />} />
       </Routes>
     </div>
   );

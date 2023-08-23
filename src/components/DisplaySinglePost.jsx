@@ -55,10 +55,10 @@ const DisplaySinglePost = () => {
           <h3>Will Deliver: {post.willDeliver ? "Yes" : "No"}</h3>
 
           {token && post.isAuthor && (
-            <button onClick={() => navigate(`/${post._id}`)}>Test Edit</button>
+            <button className="btn" onClick={() => navigate(`/editpost`)}>Edit</button>
           )}
           {token && post.isAuthor && (
-            <button onClick={() => handleDelete(post._id)}>Test Delete</button>
+            <button className="btn" onClick={() => handleDelete(post._id)}>Delete</button>
           )}
           {token && !post.isAuthor && (
             <div>

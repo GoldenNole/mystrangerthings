@@ -5,7 +5,7 @@ import { myData } from "../API/main";
 
 const Profile = () => {
   const [userPosts, setUserPosts] = useState([]);
-  const [messages, setMessages] = useState([]);
+  const [userMessages, setUserMessages] = useState([]);
   const [user, setUser] = useState("");
   const token = localStorage.getItem("token");
 
@@ -17,11 +17,11 @@ const Profile = () => {
       if (responce.success) {
         setUserPosts(responce.data.posts);
         setUser(responce.data.username);
-        const messages = responce.data.messages;
-        const filteredMessages = messages.filter(message => {
+        setUserMessages(responce.data.messages);
+        const filteredMessages = userMessages.filter(message => {
           return message.fromUser.username === user;
         });
-        setMessages(filteredMessages);
+        setUserMessages(filteredMessages);
       }
     }
     getUsersData();
@@ -49,8 +49,8 @@ const Profile = () => {
           </div>
         ))}
       <h1> My Messages </h1>
-      {messages &&
-        messages.map((message) => (
+      {userMessages &&
+        userMessages.map((message) => (
           <div key={message._id} className="container">
             <h2>{message.post.title}</h2>
             <h3>{message.content}</h3>
