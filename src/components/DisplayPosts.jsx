@@ -41,6 +41,7 @@ const DisplayPosts = () => {
     <div className="main-container">
       <div className="container">
         <h1>Welcome to Stranger Things!</h1>
+        {!token && <h2>Please Sign In or Sign Up</h2>}
         <h2>Search</h2>
         <input
           type="search"
