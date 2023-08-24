@@ -59,25 +59,40 @@ li {
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
+  align-items: right;
+  text-align: center;
+  flex-direction: column;
+  min-height: 100px;
+}
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.login_container {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 750px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   flex-direction: column;
-  min-height: 50vh;
-}
-
-.player-container h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.player-container img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-#dogimg {
-  height: 250px;
+  min-height: 300px;
 }
 
 header h1 {
@@ -87,17 +102,25 @@ header h1 {
 }
 
 .btn {
+  padding: 5px 30px;
+  border-radius: 2em;
+  border: solid  #FF1515;
+  background-color: #fff;
+}
+
+.btn:hover {
+  transition: all 0.3s ease 0s;
+  background: #19bb3f;
+}
+
+.delete-btn {
   padding: 10px 30px;
   border-radius: 2em;
   border: solid #fff;
 }
 
-.details-button:hover {
-  transition: all 0.3s ease 0s;
-  background: #19bb3f;
-}
 
-.delete-button:hover {
+.delete-btn:hover {
   transition: all 0.3s ease 0s;
   background: #f64f59;
 }

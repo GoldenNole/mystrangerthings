@@ -6,7 +6,6 @@ import Header from "./Header";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   console.log("LOGIN TOKEN", token);
@@ -23,7 +22,7 @@ const Login = () => {
         localStorage.setItem("token", result.data.token);
         navigate("/profile");
       } catch (error) {
-        setError("Username or Password is incorrect, please try again!");
+        alert("Username or Password is incorrect, please try again!");
       }
     }
   };
@@ -31,9 +30,9 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="container">
-      <h2>Sign In</h2>
-      {error && <p>{error}</p>}
+      <div className="login_container center">
+      <h1>Welcome to Stranger Things!</h1>
+      <h2>Please Sign In</h2>
       <form onSubmit={handleSubmit}>
         <label value={username} onChange={(e) => setUsername(e.target.value)}>
           Username: <input />
@@ -43,9 +42,10 @@ const Login = () => {
           Password: <input />
         </label>
         <br></br>
-        <button>Submit</button>
+        <button className="btn">Submit</button>
       </form>
-      <button onClick={() => navigate("/register")}>Sign Up</button>
+      <h3>If dont you already have an account then please sign up!</h3>
+      <button className="btn" onClick={() => navigate("/register")}>Sign Up</button>
       </div>
     </>
   );
