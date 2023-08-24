@@ -4,6 +4,12 @@ import { deletePost, fetchPosts, postMessage } from "../API/main";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 
+/*
+{token && post.isAuthor && (
+            <button className="btn" onClick={() => navigate(`/editpost`)}>Edit</button>
+          )}
+  */
+
 const DisplaySinglePost = () => {
   const [post, setPost] = useState([]);
   const [message, setMessage] = useState("");
@@ -27,7 +33,7 @@ const DisplaySinglePost = () => {
   async function handleMessage() {
     try {
       const result = await postMessage(postId, message);
-      getAllPosts();
+      navigate(`/`);
     } catch (error) {
       console.error(error);
     }
@@ -45,24 +51,24 @@ const DisplaySinglePost = () => {
   return (
     <div>
       <Header />
+      <div className="main-container">
       {post.map((post) => (
-        <div key={post._id} className="container">
+        <div key={post._id}>
+          <div className="container">
           <h1>{post.title}</h1>
           <h4>Posted by: {post.author.username}</h4>
           <h3>{post.description}</h3>
           <h3>Asking Price: {post.price}</h3>
           <h3>Location: {post.location}</h3>
           <h3>Will Deliver: {post.willDeliver ? "Yes" : "No"}</h3>
-
+          <br></br>
           {token && post.isAuthor && (
-            <button className="btn" onClick={() => navigate(`/editpost`)}>Edit</button>
+            <button className="delete-btn" onClick={() => handleDelete(post._id)}>Delete</button>
           )}
-          {token && post.isAuthor && (
-            <button className="btn" onClick={() => handleDelete(post._id)}>Delete</button>
-          )}
+          </div>
           {token && !post.isAuthor && (
-            <div>
-              <h3>Message</h3>
+            <div className="container">
+              <h2>Leave a Message</h2>
               <form>
                   <input
                     value={message}
@@ -72,19 +78,25 @@ const DisplaySinglePost = () => {
                     onChange={(e) => setMessage(e.target.value)}
                   />
               </form>
-              <button onClick={() => handleMessage()}>
+              <button className="btn" onClick={() => handleMessage()}>
                 Submit
               </button>
             </div>
           )}
+          {token && post.isAuthor && (
+            <div>
+          <h1>Messages</h1>
           {post.messages.map((message) => (
-            <div key={message._id}>
-              <h3>{message.content} {message.fromUser.username}</h3>
+            <div className="container" key={message._id}>
+              <h2>{message.fromUser.username}</h2>
+              <h3>{message.content}</h3>
             </div>
-          ))}
+          ))} 
+          </div>)}
         </div>
       ))}
-      <button onClick={() => navigate(`/`)}> Back to Posts</button>
+      <button className="btn" onClick={() => navigate(`/`)}> Back to Posts</button>
+      </div>
     </div>
   );
 }

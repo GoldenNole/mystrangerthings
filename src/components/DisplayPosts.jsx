@@ -38,7 +38,7 @@ const DisplayPosts = () => {
   const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
   return (
-    <div>
+    <div className="main-container">
       <div className="container">
         <h1>Welcome to Stranger Things!</h1>
         <h2>Search</h2>
@@ -47,10 +47,13 @@ const DisplayPosts = () => {
           placeholder="Search Posts"
           onChange={handleChange}
         />
-        {token && (
-        <button className="btn" onClick={() => navigate(`/newpost`)}> Create a Post</button>
-        )}
       </div>
+      {token && (
+        <div className="container">
+          <h1>Create a New Post!</h1>
+          <button className="btn" onClick={() => navigate(`/newpost`)}>Create</button>
+        </div>
+      )}
       {postsToDisplay.map((post) => (
         <div key={post._id} className="container">
           <h1>{post.title}</h1>

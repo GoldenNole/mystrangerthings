@@ -6,10 +6,8 @@ import { registerUser } from "../API/main";
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  console.log("LOGIN TOKEN", token);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +23,7 @@ const SignUp = () => {
         const token = localStorage.getItem("token");
         navigate("/profile");
       } catch (error) {
-        setError("User already exists, please login instead!");
+        alert("User already exists, please login instead!");
       }
     }
   };
@@ -33,9 +31,9 @@ const SignUp = () => {
   return (
     <>
       <Header />
-      <div className="container">
-      <h2>Sign Up</h2>
-      {error && <p>{error}</p>}
+      <div className="login_container center">
+      <h1>Welcome to Stranger Things!</h1>
+      <h2> Please Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label value={username} onChange={(e) => setUsername(e.target.value)}>
           Username: <input />
@@ -45,9 +43,10 @@ const SignUp = () => {
           Password: <input />
         </label>
         <br></br>
-        <button>Submit</button>
+        <button className="btn">Submit</button>
       </form>
-      <button onClick={() => navigate("/login")}>Log In</button>
+      <h3>If you already have an account then use the login!</h3>
+      <button className="btn" onClick={() => navigate("/login")}>Log In</button>
       </div>
     </>
   );
