@@ -18,10 +18,10 @@ const CreatePostForm = () => {
   }
 
   return (
-    <div className="container">
+    <div className="create-container">
       <h1> Add New Post </h1>
       <form onSubmit={handleCreatePost}>
-        <label> Title:
+        <label> Title: 
         <input
           value={title}
           type="text"
@@ -31,7 +31,7 @@ const CreatePostForm = () => {
         />
         </label>
         <br></br>
-        <label> Description:
+        <label> Description: 
         <input
           value={description}
           type="text"
@@ -41,7 +41,7 @@ const CreatePostForm = () => {
         />
         </label>
         <br></br>
-        <label> Price: 
+        <label> Price:  
         <input
           value={price}
           type="text"
@@ -51,7 +51,7 @@ const CreatePostForm = () => {
         />
         </label>
         <br></br>
-        <label> Loaction:
+        <label> Loaction: 
         <input 
           value={location}
           type="text"
@@ -61,7 +61,7 @@ const CreatePostForm = () => {
         />
         </label>
         <br></br>
-        <label> Will Deliver:
+        <label> Will Deliver: 
         <input
           value={deliver}  
           type="checkbox"
@@ -69,8 +69,9 @@ const CreatePostForm = () => {
           onChange={(e) => setDeliver(!deliver)} />
           </label>
           <br></br>
-        <button>Submit</button>
+        <button className="btn">Submit</button>
       </form>
+      <button className="btn" onClick={() => navigate(`/`)} >Return to Posts</button>
     </div>
   );
 };
